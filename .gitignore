@@ -23,3 +23,6 @@ uv.lock
 # opencode
 .omo
 session-*.md
+
+# test
+experiments/test/

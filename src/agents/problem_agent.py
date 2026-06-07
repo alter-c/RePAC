@@ -72,19 +72,25 @@ class ProblemAgent(Agent):
         return prompt
 
     def _create_fix_prompt(self, error_message, example=False):
+        # TODO check if need desc
         if example:
-            domain_pddl_file = self.domain.get_problem_context_pddl_file()
-            problem_pddl_file = self.domain.get_problem_context_desc_file()
+            domain_pddl_file = self.domain.get_domain_pddl_file()
+            problem_pddl_file = self.domain.get_problem_context_pddl_file()
+            problem_desc_file = self.domain.get_problem_context_desc_file()
         else:
             domain_pddl_file = self.domain.get_domain_pddl_file()
             problem_pddl_file = self.domain.get_problem_pddl_file(self.index)
+            problem_desc_file = self.domain.get_problem_desc_file(self.index)
         with open(domain_pddl_file, "r") as f:
             domain_pddl = f.read()
         with open(problem_pddl_file, "r") as f:
             problem_pddl = f.read()
+        with open(problem_desc_file, "r") as f:
+            problem_desc = f.read()
         prompt = self.fix_prompt.format(
             domain_pddl=domain_pddl,
             problem_pddl=problem_pddl, 
+            problem_desc=problem_desc,
             error_message=error_message)
         return prompt
 
@@ -158,4 +164,3 @@ class ProblemAgent(Agent):
                 self.domain.get_domain_pddl_file(),
                 self.domain.get_problem_pddl_file(self.index)   
             )
-        

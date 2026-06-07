@@ -55,16 +55,24 @@ The domain pddl of the problem is:
 The problem pddl to fix is:
 {problem_pddl}
 
+The problem description is:
+{problem_desc}
+
 The error message is:
 {error_message}
 """
 
 
-REVIEW_SYSTEM_PROMPT = """You are an expert in AI planning and good at reviewing PDDL domain and problem files. You can identify errors and suggest improvements from the PDDL files. You should give the concise error message and improvement suggestion for the given PDDL files without anything else.
+REVIEW_SYSTEM_PROMPT = """You are an expert in AI planning. You are good at reviewing PDDL files and giving improvement suggestions."""
+
+REVIEW_GENERATE_PROMPT = """You can identify how to fix the PDDL files from the error message or improvement suggestion. You should just give the concise error message or improvement suggestion for the given PDDL files without anything else. Note that you must point out which file to be fixed, the output should be in the format of "[DOMAIN] detailed error." or "[PROBLEM] detailed suggestion."
 
 The domain pddl is:
 {domain_pddl}
 
 The problem pddl is:
 {problem_pddl}
+
+The error message is:
+{error_message}
 """
