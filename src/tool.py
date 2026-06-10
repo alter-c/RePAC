@@ -63,7 +63,7 @@ def downward_solve(
         elif exit_code == 12:
             return False, "Problem is unsolvable."
         elif exit_code in [22, 23, 24]:
-            return False, "Planner search out of time or memory."
+            return False, "Planner search out of limit."
         else:
             return False, f"Planner failed with exit code {exit_code} indicating an internal error."
     else:

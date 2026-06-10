@@ -91,6 +91,10 @@ for domain_name in DOMAINS:
             print("Problem solved successfully!")
             return True
         else:
+            # TODO out of limit means problem generate successfully but too hard
+            if "out of limit" in error_message:
+                print("Problem solved failed because it is hard!")
+                return True
             print(f"Problem solve failed! {error_message}")
             res = review_agent.generate_review(error_message)
             error_type, suggestion = review_agent.extract_suggestions(res)
