@@ -1,0 +1,19 @@
+(define (problem blocksworld-complex)
+  (:domain blocksworld)
+  (:objects b1 b2 b3 b4 b5)
+  (:init
+    (on-table b5)
+    (on b4 b1)
+    (on b2 b3)
+    (on b3 b5)
+    (on b1 b2)
+    (clear b4)
+    (arm-empty)
+  )
+  (:goal
+    (and
+      (on b1 b3)
+      (on b3 b5)
+    )
+  )
+)

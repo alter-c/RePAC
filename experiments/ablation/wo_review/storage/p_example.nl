@@ -1,0 +1,1 @@
+You have 1 depot storearea, 1 container storearea, 1 hoist, 1 crate, 1 loadarea. The depot storearea is depot48-1-1. The container storearea is container-0-0. The crate is on container-0-0. The hoist is in depot48-1-1. The depot storearea and loadarea are connected. The container storearea and loadarea are connected. The goal is to move the crate to the depot storearea.

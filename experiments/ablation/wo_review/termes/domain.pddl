@@ -1,0 +1,47 @@
+(define (domain termes)
+  (:requirements :typing :negative-preconditions)
+  (:types numb position - object)
+  (:predicates
+    (height ?p ?h)
+    (at ?p)
+    (has-block)
+    (SUCC ?n1 ?n2)
+    (NEIGHBOR ?p1 ?p2)
+    (IS-DEPOT ?p)
+  )
+  (:action move
+    :parameters (?from ?to - position ?h - numb)
+    :precondition (and (at ?from) (NEIGHBOR ?from ?to) (height ?from ?h) (height ?to ?h))
+    :effect (and (not (at ?from)) (at ?to))
+  )
+  (:action move-up
+    :parameters (?from ?to - position ?h1 ?h2 - numb)
+    :precondition (and (at ?from) (NEIGHBOR ?from ?to) (height ?from ?h1) (height ?to ?h2) (SUCC ?h1 ?h2))
+    :effect (and (not (at ?from)) (at ?to))
+  )
+  (:action move-down
+    :parameters (?from ?to - position ?h1 ?h2 - numb)
+    :precondition (and (at ?from) (NEIGHBOR ?from ?to) (height ?from ?h1) (height ?to ?h2) (SUCC ?h2 ?h1))
+    :effect (and (not (at ?from)) (at ?to))
+  )
+  (:action place-block
+    :parameters (?from ?target - position ?h ?h_next - numb)
+    :precondition (and (at ?from) (has-block) (NEIGHBOR ?from ?target) (height ?from ?h) (height ?target ?h) (SUCC ?h ?h_next) (not (IS-DEPOT ?target)))
+    :effect (and (not (has-block)) (not (height ?target ?h)) (height ?target ?h_next))
+  )
+  (:action remove-block
+    :parameters (?from ?target - position ?h ?h_next - numb)
+    :precondition (and (at ?from) (not (has-block)) (NEIGHBOR ?from ?target) (height ?from ?h) (height ?target ?h_next) (SUCC ?h ?h_next) (not (IS-DEPOT ?target)))
+    :effect (and (has-block) (not (height ?target ?h_next)) (height ?target ?h))
+  )
+  (:action create-block
+    :parameters (?p - position)
+    :precondition (and (at ?p) (IS-DEPOT ?p))
+    :effect (has-block)
+  )
+  (:action destroy-block
+    :parameters (?p - position)
+    :precondition (and (at ?p) (IS-DEPOT ?p) (has-block))
+    :effect (not (has-block))
+  )
+)

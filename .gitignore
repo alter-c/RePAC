@@ -25,5 +25,4 @@ uv.lock
 session-*.md
 
 # test
-experiments/test/
 *.log

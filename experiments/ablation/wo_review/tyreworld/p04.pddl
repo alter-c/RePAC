@@ -1,0 +1,68 @@
+(define (problem complex)
+  (:domain tyreworld)
+  (:objects
+    boot - container
+    hub1 hub2 hub3 hub4 - hubect
+    nut1 nut2 nut3 nut4 - nut
+    flat-tyre1 flat-tyre2 flat-tyre3 flat-tyre4 - wheel
+    intact-tyre1 intact-tyre2 intact-tyre3 intact-tyre4 - wheel
+    jack - tool
+    pump - tool
+    wrench - tool
+  )
+  (:init
+    (closed boot)
+    (unlocked boot)
+    (in jack boot)
+    (in pump boot)
+    (in wrench boot)
+    (in intact-tyre1 boot)
+    (in intact-tyre2 boot)
+    (in intact-tyre3 boot)
+    (in intact-tyre4 boot)
+    (on flat-tyre1 hub1)
+    (on flat-tyre2 hub2)
+    (on flat-tyre3 hub3)
+    (on flat-tyre4 hub4)
+    (on-ground hub1)
+    (on-ground hub2)
+    (on-ground hub3)
+    (on-ground hub4)
+    (tight nut1 hub1)
+    (tight nut2 hub2)
+    (tight nut3 hub3)
+    (tight nut4 hub4)
+    (fastened hub1)
+    (fastened hub2)
+    (fastened hub3)
+    (fastened hub4)
+    (intact intact-tyre1)
+    (intact intact-tyre2)
+    (intact intact-tyre3)
+    (intact intact-tyre4)
+  )
+  (:goal
+    (and
+      (on intact-tyre1 hub1)
+      (on intact-tyre2 hub2)
+      (on intact-tyre3 hub3)
+      (on intact-tyre4 hub4)
+      (inflated intact-tyre1)
+      (inflated intact-tyre2)
+      (inflated intact-tyre3)
+      (inflated intact-tyre4)
+      (tight nut1 hub1)
+      (tight nut2 hub2)
+      (tight nut3 hub3)
+      (tight nut4 hub4)
+      (in flat-tyre1 boot)
+      (in flat-tyre2 boot)
+      (in flat-tyre3 boot)
+      (in flat-tyre4 boot)
+      (in wrench boot)
+      (in jack boot)
+      (in pump boot)
+      (closed boot)
+    )
+  )
+)

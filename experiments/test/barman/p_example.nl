@@ -1,0 +1,1 @@
+You have 1 shaker with 1 level, 1 shot glass, 2 dispensers for 2 ingredients. The shaker and shot glass are clean, empty, and on the table. Your left and right hands are empty. The first ingredient of cocktail1 is ingredient1. The second ingredient of cocktail1 is ingredient2. Your goal is to make 1 cocktail. shot1 contains cocktail1.
