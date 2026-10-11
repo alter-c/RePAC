@@ -1,0 +1,8 @@
+(go-out hoist0 depot48-1-2 loadarea)
+(go-in hoist0 loadarea container-0-0)
+(lift hoist0 crate0 container-0-0 container0)
+(go-out hoist0 container-0-0 loadarea)
+(go-in hoist0 loadarea depot48-1-2)
+(move hoist0 depot48-1-2 depot48-1-1)
+(drop hoist0 crate0 depot48-1-1 depot48)
+; cost = 7 (unit cost)

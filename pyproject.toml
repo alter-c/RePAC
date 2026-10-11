@@ -1,0 +1,13 @@
+[project]
+name = "RePAC"
+version = "0.1.0"
+description = "Reliable and Flexible Task Planning Framework via Agentic Collaboration"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "backoff",
+    "openai",
+    "pytest",
+    "pddl",
+    "nvitop",
+]
