@@ -18,7 +18,7 @@ class Domain:
             f"Domain {name} not found."
         self.name = name
         self.data_dir = os.path.join("./datasets", name)
-        self.exp_dir = os.path.join("./experiments/test", name)
+        self.exp_dir = os.path.join("./experiments/main", name)
         os.makedirs(self.exp_dir, exist_ok=True)
 
         self.problems = self._grab_problems()
