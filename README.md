@@ -1,79 +1,43 @@
-# LLM+P: Empowering Large Language Models with Optimal Planning Proficiency
-This repo contains the source code for making plans based on problems decribed by natural language.
+# RePAC: Reliable and Flexible Task Planning Framework via Agentic Collaboration
+This repo contains the source code for making reliable plans based on problems decribed by natural language .
 
-## Dependency
+## Installation
+1. Clone repository and prepare Environment.
+   ```
+   git clone --recursive https://github.com/alter-c/llm-pddl.git
 
-1. Install OpenAI GPT [API](https://platform.openai.com/docs/quickstart/build-your-application). Remember to put openai_keys under the ```keys``` folder.
+   uv venv --python 3.12
+   uv sync
+   ```
 
-2. Install [fast-downward](https://drive.google.com/file/d/16HlP14IN06asIXYAZ8RHR1P7-cEYwhA6/view). For more details on fast-downward, please check the official [github repo](https://github.com/aibasel/downward) and the fast-downward [website](https://www.fast-downward.org/).
+2. Build [downward](https://github.com/aibasel/downward).
+   ```
+   cd downward && ./build.py
+   ```
 
-## Running Code
-To run a for a specific task in a specific domain using a specific method:
+3. Install DeepSeek [API](https://platform.deepseek.com/) and set environment variable `DEEPSEEK_API_KEY`.
+
+## Evaluation
+To reproduce the experiment in paper:
 ```
-python main.py --domain DOMAIN --method METHOD --task TASK_ID
+python main.py
 ```
-`DOMAIN` is selected from
-```[barman, blocksworld, floortile, grippers, storage, termes, tyreworld]```
 
-`METHOD` is selected from
-```[llm_ic_pddl_planner, llm_pddl_planner, llm_planner, llm_ic_planner]```
-
-Alternatively, you can just use:
-```
-bash run.sh DOMAIN METHOD TASK_ID
-```
+## Acknowledgement
+We sincerely thank the open-source projects that our code is built upon.
+- [LLM+P](https://github.com/Cranial-XIX/llm-pddl)
+- [Downward](https://github.com/aibasel/downward)
+- [VAL](https://github.com/KCL-Planning/VAL)
 
 ## Citations
-Please cite [this pre-print](https://arxiv.org/abs/2304.11477) if you find this repo useful.
-
+If you found this work to be useful in your research, please cite the following:
 ```
-@article{liu2023llmp,
-  title={LLM+P: Empowering Large Language Models with Optimal Planning Proficiency},
-  author={Liu, Bo and Jiang, Yuqian and Zhang, Xiaohan and Liu, Qiang and Zhang, Shiqi and Biswas, Joydeep and Stone, Peter},
-  journal={arXiv preprint arXiv:2304.11477},
-  year={2023}
+@inproceedings{dongxu2025reliable,
+  title={Reliable and Flexible Task Planning Framework via Agentic Collaboration},
+  author={Dongxu, Chen},
+  booktitle={2026 23rd International Computer Conference on Wavelet Active Media Technology and Information Processing (ICCWAMTIP)},
+  pages={1--4},
+  year={2026},
+  organization={IEEE}
 }
 ```
-
-## The File Hierarchy:
-```
-llm-pddl
- └─main.py                         (the main python script)
- └─keys
-    └─ openai_keys.txt             (you should place your openai keys here, one line each)
- └─domains                         (the generated domain files)
-    └─ barman
-        └─ description_geneator.py (generating natural language description)
-        └─ p_example.nl            (example natural language)
-        └─ p_example.pddl          (example problem pddl file)
-        └─ domain.pddl             (the shared domain.pddl file for all problems)
-        └─ xxx.nl                  (task natural language description)
-        └─ xxx.pddl                (ground-truth problem pddl, might not be used)
-    └─ blocksworld
-    └─ floortile
-    └─ grippers
-    └─ storage
-    └─ termes
-    └─ tyreworld
- └─problems                        (the generated problem pddl files)
-    └─ llm                         (empty, since llm -> plan does not generate pddl)
-    └─ llm_ic                      (empty, since llm + context -> plan does not generate pddl)    
-    └─ llm_pddl                    (baseline 2: llm -> p.pddl)
-    └─ llm_ic_pddl                 (ours: llm + context -> p.pddl)
-        └─ barman
-        └─ ...
- └─plans                           (the tmp folder for storing raw solutions found by fast-downward)
-    └─ llm                         (empty, since llm -> plan does not generate raw plans)
-    └─ llm_ic                      (empty, since llm + context -> plan does not generate raw plans)
-    └─ llm_pddl                    (baseline 2: llm -> p.pddl)
-    └─ llm_ic_pddl                 (ours: llm + context -> p.pddl)
-        └─ barman
-        └─ ...
- └─results                         (the final plan in natural language)
-    └─ llm                         (baseline 1: llm -> plan)
-    └─ llm_ic                      (baseline 3: llm + context -> plan)
-    └─ llm_pddl                    (baseline 2: llm -> p.pddl)
-    └─ llm_ic_pddl                 (ours: llm + context -> p.pddl)
-        └─ barman
-        └─ ...
- ```

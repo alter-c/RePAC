@@ -22,3 +22,6 @@ uv.lock
 
 # opencode
 session-*.md
+
+# paper
+*.pdf
