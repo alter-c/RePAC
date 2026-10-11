@@ -21,8 +21,4 @@ keys
 uv.lock
 
 # opencode
-.omo
 session-*.md
-
-# test
-*.log
