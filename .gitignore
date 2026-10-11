@@ -6,7 +6,6 @@ Condor*
 __pycache__/
 .pytest_cache/
 *.pyc
-downward
 openai-quickstart-node/
 trainlogs
 clean.sh
